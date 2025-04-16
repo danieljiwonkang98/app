@@ -1,27 +1,13 @@
 // Import required Electron components
 import { app, BrowserWindow } from 'electron';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import electronSquirrelStartup from 'electron-squirrel-startup';
-import fs from 'fs';
+import { initializeEnv } from './env-loader';
 
-// Create __dirname equivalent for ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Determine app root directory
-const appDir = path.resolve(__dirname, '..', '..');
-console.log('App directory:', appDir);
-
-// For debugging
-console.log('__dirname:', __dirname);
-
-// Get the bundled HTML path
-const bundledHTMLPath = path.join(appDir, 'dist', 'index.html');
-console.log('Bundled HTML path:', bundledHTMLPath);
+// This constant is set by the electron-forge webpack plugin
+const MAIN_WINDOW_WEBPACK_ENTRY = process.env.MAIN_WINDOW_WEBPACK_ENTRY || 'http://localhost:3000';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (electronSquirrelStartup) {
+if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
@@ -33,45 +19,20 @@ const createWindow = () => {
   mainWindow = new BrowserWindow({
     width: 1024,
     height: 768,
-    backgroundColor: '#282c34', // Set background color to match React app
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
-      preload: path.join(__dirname, 'preload.cjs'),
-      devTools: true,
+      preload: path.join(__dirname, 'preload.js'),
     },
   });
 
-  // Try to load the bundled file
-  if (fs.existsSync(bundledHTMLPath)) {
-    console.log('Loading bundled React app from:', bundledHTMLPath);
-    mainWindow
-      .loadFile(bundledHTMLPath)
-      .then(() => console.log('Successfully loaded bundled React app'))
-      .catch(err => console.error('Failed to load bundled React app:', err));
-  } else {
-    console.error('Error: Bundled HTML file not found at', bundledHTMLPath);
-    // Instead of falling back to a test page, we'll show an error message directly
-    mainWindow.loadURL(`data:text/html,<html>
-      <head><title>Error</title>
-        <style>body{font-family:sans-serif;color:white;background:#cc0000;padding:30px;text-align:center;}
-        h1{font-size:24px;} button{padding:10px 20px;cursor:pointer;}</style>
-      </head>
-      <body>
-        <h1>Error: Could not load the application</h1>
-        <p>The bundled application was not found. Please make sure you've built the app correctly.</p>
-        <button onclick="window.location.reload()">Reload</button>
-      </body>
-    </html>`);
+  // Load the index.html file or URL
+  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+
+  // Open the DevTools in development mode
+  if (process.env.NODE_ENV === 'development') {
+    mainWindow.webContents.openDevTools();
   }
-
-  // Always open DevTools for debugging
-  mainWindow.webContents.openDevTools();
-
-  // Log console messages from the page
-  mainWindow.webContents.on('console-message', (event, level, message, line, sourceId) => {
-    console.log(`[Renderer Console]: ${message}`);
-  });
 
   // Emitted when the window is closed
   mainWindow.on('closed', () => {
@@ -79,6 +40,9 @@ const createWindow = () => {
     mainWindow = null;
   });
 };
+
+// Load environment variables before app is ready
+initializeEnv();
 
 // Create window when Electron has finished initialization
 app.on('ready', createWindow);

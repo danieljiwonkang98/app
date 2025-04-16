@@ -34,3 +34,19 @@ contextBridge.exposeInMainWorld('electronAPI', {
     return null;
   },
 });
+
+// Expose a method to get environment variables from the main process
+contextBridge.exposeInMainWorld('electron', {
+  // Get environment variables
+  getEnv: () => {
+    // Access environment variables shared by the main process
+    if (global.envVariables) {
+      return { ...global.envVariables };
+    }
+
+    // Fallback to development defaults
+    return {
+      NODE_ENV: process.env.NODE_ENV || 'development',
+    };
+  },
+});
