@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #4285f4;
+    }
+    button {
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #3367d6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Simple Electron Test</h1>
+    <p>If you can see this, Electron is working correctly!</p>
+    <p id="electron-status">Checking if running in Electron...</p>
+    <button id="test-button">Click Me</button>
+  </div>
+
+  <script>
+    // Simple test script
+    document.getElementById('test-button').addEventListener('click', function() {
+      alert('Button clicked!');
+    });
+
+    // Check if running in Electron
+    if (window.electronAPI) {
+      document.getElementById('electron-status').textContent = 'Running in Electron ✅';
+    } else {
+      document.getElementById('electron-status').textContent = 'Not running in Electron ❌';
+    }
+  </script>
+</body>
+</html> 
