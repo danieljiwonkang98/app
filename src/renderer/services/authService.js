@@ -1,6 +1,6 @@
-import { validateCode } from './validationService';
-import sessionService from './sessionService';
-import { initSupabase } from './supabase';
+import { validateCode } from './validationService.js';
+import sessionService from './sessionService.js';
+import { initSupabase } from './supabase.js';
 
 // Event bus for auth-related events
 const authEvents = {

@@ -41,6 +41,7 @@
     "electron-direct": "npx electron .",
     "electron-bundle": "webpack --mode development && electron .",
     "test": "react-scripts test",
+    "test:validation": "node scripts/test-validation.js",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js,.jsx src/",
     "lint:fix": "eslint --ext .js,.jsx src/ --fix",

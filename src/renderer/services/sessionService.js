@@ -1,5 +1,5 @@
-import { supabase } from './supabase';
-import { SESSION_CONFIG } from './config';
+import { supabase } from './supabase.js';
+import { SESSION_CONFIG } from './config.js';
 
 // In-memory storage for the current session
 let currentSession = null;

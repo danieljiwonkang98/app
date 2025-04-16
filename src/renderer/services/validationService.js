@@ -1,4 +1,4 @@
-import { validateInterviewCode } from './supabase';
+import { validateInterviewCode } from './supabase.js';
 
 // Simple in-memory rate limiting
 const rateLimiter = {
