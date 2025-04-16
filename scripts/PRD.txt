@@ -1,0 +1,98 @@
+# Overview
+The AI Interview Cheating Detection Desktop Application is a sophisticated monitoring tool designed to detect and prevent cheating during remote technical interviews. Built with Electron and React, this cross-platform desktop application runs on the interviewee’s computer, providing a secure and transparent monitoring solution that respects privacy while ensuring interview integrity.
+
+This product addresses the growing problem of AI-assisted cheating in technical interviews, where candidates use AI tools like ChatGPT to generate responses in real-time. By running locally, the application can detect suspicious activities that web-based solutions cannot identify, offering minimal false positives. Primary users include:
+- Job candidates participating in remote technical interviews
+- Technical hiring teams overseeing these interviews
+- Companies seeking to protect the integrity of their hiring process
+
+# Core Features
+1. Secure Authentication System  
+   - Interview Code Entry  
+   - Session Management (automatic session creation/termination)  
+   - Secure Connection (end-to-end encrypted)  
+   - Identity Verification (webcam)  
+
+2. Transparent Permission System  
+   - Clear Permission Requests  
+   - Granular Control  
+   - Visual Indicators (showing active monitoring)  
+   - Privacy Controls (temporary pause for legitimate reasons)  
+
+3. Multi-Modal Cheating Detection  
+   - Screen Monitoring (capture screen content)  
+   - Process Monitoring (track running applications)  
+   - Text Analysis (detect AI-generated text patterns)  
+   - Audio Analysis (detect reading from scripts)  
+   - Network Traffic Analysis (flag known AI service connections)  
+
+4. Minimal UI During Interviews  
+   - Distraction-Free Interface  
+   - Status Indicators (show monitoring status)  
+   - Notification System (discreet prompts for permissions/issues)  
+   - Interview Timer  
+
+5. Privacy-First Design  
+   - Local Processing (where possible)  
+   - Minimal Data Collection  
+   - Transparent Monitoring  
+   - Data Retention Controls (automatic data deletion post-interview)  
+
+# User Experience
+1. Pre-Interview Setup  
+   - Interviewee receives invitation with unique code  
+   - Downloads and installs desktop application  
+   - Application performs system requirements check  
+
+2. Interview Initialization  
+   - User enters unique interview code  
+   - Application requests necessary permissions with clear explanations  
+   - Connection test with interviewer dashboard  
+   - Baseline monitoring begins to establish normal usage patterns  
+
+3. During Interview  
+   - Monitoring runs in the background with minimal UI  
+   - Detection algorithms analyze multiple signals for suspicious patterns  
+   - Interviewee completes tasks uninterrupted  
+   - status indicators confirm active monitoring  
+
+4. Post-Interview  
+   - Monitoring data is securely transmitted to interviewer dashboard  
+   - Local data deleted according to retention policy  
+   - Interviewee receives session completion confirmation  
+   - Optional feedback form about application experience  
+
+# Technical Architecture
+- Built with Electron (desktop wrapper) and React (UI)  
+- Integrations for screen capture, process monitoring, and secure data handling  
+- Data encrypted in transit to the interviewer dashboard  
+- Audio/video capture modules  
+- Supabase for backend and datastorage
+
+# Development Roadmap
+• Phase 1 (MVP):  
+  - Implement secure authentication and basic monitoring (screen + process)  
+  - Minimal UI for interview state and permission management  
+  - Local processing of data and immediate encryption for transmission  
+• Phase 2 (Enhancements):  
+  - Add audio analysis, text analysis for AI-generated patterns  
+  - Expand feature toggles for transparency and privacy controls  
+  - Integrate optional identity verification systems  
+• Phase 3 (Extended Capabilities):  
+  - Introduce advanced analytics and detection heuristics  
+  - Further UI/UX refinements  
+  - Expand language support in the integrated code editor  
+
+# Logical Dependency Chain
+- Foundational permissions and authentication must be fully functional before advanced monitoring modules  
+- MVP requires quick path to active detection and minimal false positives  
+- Future enhancements build on baseline monitoring systems  
+
+# Risks and Mitigations
+- Technical Challenges: High resource usage or conflict with OS-level permissions mitigated by thorough testing  
+- Data Sensitivity: Strict retention/integrity controls  
+- Conceptual Acceptance: Provide transparent UI to assure users of privacy  
+
+# Appendix
+- Research findings on AI usage in technical interviews  
+- Technical specifications for OS-level security and data protection  

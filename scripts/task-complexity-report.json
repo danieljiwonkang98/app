@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "generatedAt": "2025-04-16T07:44:32.154Z",
+    "tasksAnalyzed": 10,
+    "thresholdScore": 5,
+    "projectName": "Your Project Name",
+    "usedResearch": false
+  },
+  "complexityAnalysis": [
+    {
+      "taskId": 1,
+      "taskTitle": "Setup Electron and React Project Structure",
+      "complexityScore": 6,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the Electron and React project setup into specific technical steps including initialization, configuration, and structure setup. Include specific tooling decisions and configuration files that need to be created.",
+      "reasoning": "This task involves multiple technical configurations and architectural decisions. While it's a standard development setup, it requires careful configuration of Electron with React, webpack, and establishing proper project structure. The interdependencies between main and renderer processes add complexity."
+    },
+    {
+      "taskId": 2,
+      "taskTitle": "Implement Authentication System with Supabase",
+      "complexityScore": 7,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Detail the specific steps to implement Supabase authentication in an Electron app, including API configuration, UI components, session management, and security measures for interview code validation.",
+      "reasoning": "Authentication implementation with Supabase involves multiple components: backend configuration, secure token storage, session management, and UI development. The interview code validation adds custom logic beyond standard auth flows. Security considerations and encryption requirements increase complexity."
+    },
+    {
+      "taskId": 3,
+      "taskTitle": "Develop Permission System and Privacy Controls",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the permission system implementation into specific components including permission request dialogs, status indicators, persistence mechanisms, and the central permission management service with its API.",
+      "reasoning": "This task involves complex permission management across multiple sensitive areas (screen, processes, webcam, audio). It requires careful UI design for transparency, state management for permissions, and secure persistence. The privacy pause feature with reason logging adds additional complexity."
+    },
+    {
+      "taskId": 4,
+      "taskTitle": "Implement Screen Monitoring Module",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Detail the specific implementation steps for screen monitoring, including capture mechanisms, analysis algorithms, encryption, optimization techniques, and configuration options.",
+      "reasoning": "Screen monitoring involves complex technical challenges: efficient capture, immediate encryption, image analysis, and performance optimization. The need to detect application switching and suspicious content requires sophisticated analysis algorithms while maintaining minimal resource usage."
+    },
+    {
+      "taskId": 5,
+      "taskTitle": "Develop Process Monitoring System",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the process monitoring implementation into specific components including the monitoring service, detection algorithms, database of known tools, and performance optimization techniques.",
+      "reasoning": "Process monitoring requires platform-specific implementations and careful performance optimization. Creating and maintaining a database of known AI tools adds complexity. The heuristics for detecting obfuscated processes require sophisticated detection algorithms."
+    },
+    {
+      "taskId": 6,
+      "taskTitle": "Build Minimal Interview UI",
+      "complexityScore": 5,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Detail the specific UI components needed for the interview interface, including status indicators, notification system, timer implementation, and responsive design considerations.",
+      "reasoning": "While UI development is straightforward, this task requires careful design for non-intrusiveness while still providing clear status information. The notification system and animations add some complexity, but overall this is a more standard UI development task."
+    },
+    {
+      "taskId": 7,
+      "taskTitle": "Implement Network Traffic Analysis",
+      "complexityScore": 9,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Break down the network traffic analysis implementation into specific components including monitoring mechanisms, detection algorithms, database of AI services, pattern matching techniques, and privacy safeguards.",
+      "reasoning": "Network traffic analysis is highly complex, requiring deep technical knowledge of networking protocols and pattern recognition. Maintaining a database of AI service endpoints and developing heuristics for suspicious patterns while respecting privacy boundaries makes this one of the most complex tasks."
+    },
+    {
+      "taskId": 8,
+      "taskTitle": "Develop Text Analysis for AI-Generated Content",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Detail the specific components needed for AI text detection, including clipboard monitoring, analysis algorithms, pattern recognition techniques, and performance optimization approaches.",
+      "reasoning": "Detecting AI-generated content requires sophisticated text analysis algorithms. Implementing clipboard monitoring and real-time analysis adds technical complexity. The need for local processing and performance optimization during continuous monitoring further increases the challenge."
+    },
+    {
+      "taskId": 9,
+      "taskTitle": "Implement Audio Analysis Module",
+      "complexityScore": 9,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Break down the audio analysis implementation into specific components including capture mechanisms, processing pipeline, detection algorithms for reading patterns and secondary voices, and optimization techniques.",
+      "reasoning": "Audio analysis is highly complex, involving signal processing and machine learning techniques. Detecting reading patterns, secondary voices, and checking voice consistency requires sophisticated algorithms. Real-time processing adds significant performance challenges."
+    },
+    {
+      "taskId": 10,
+      "taskTitle": "Implement Data Handling and Retention Controls",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Detail the specific components needed for secure data handling, including encryption mechanisms, transmission protocols, retention policy implementation, and verification systems.",
+      "reasoning": "This task involves implementing secure data practices across multiple domains. Encryption, compression, audit logging, and automatic deletion mechanisms all require careful implementation. The verification system for interviewees adds additional complexity."
+    }
+  ]
+}
