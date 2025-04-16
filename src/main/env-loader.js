@@ -1,6 +1,6 @@
-const path = require('path');
-const fs = require('fs');
-const { app } = require('electron');
+import path from 'path';
+import fs from 'fs';
+import { app } from 'electron';
 
 /**
  * Load environment variables from .env file
@@ -82,4 +82,4 @@ function initializeEnv(customEnvPath) {
   };
 }
 
-module.exports = { initializeEnv };
+export { initializeEnv };

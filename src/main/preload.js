@@ -1,4 +1,10 @@
 import { contextBridge, ipcRenderer } from 'electron';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// ES module equivalent for __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Expose protected methods that allow the renderer process to use
 // the ipcRenderer without exposing the entire object

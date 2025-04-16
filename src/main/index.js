@@ -1,13 +1,19 @@
 // Import required Electron components
 import { app, BrowserWindow } from 'electron';
 import path from 'path';
-import { initializeEnv } from './env-loader';
+import { fileURLToPath } from 'url';
+import { initializeEnv } from './env-loader.js';
+import electronSquirrelStartup from 'electron-squirrel-startup';
+
+// ES module equivalent for __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // This constant is set by the electron-forge webpack plugin
 const MAIN_WINDOW_WEBPACK_ENTRY = process.env.MAIN_WINDOW_WEBPACK_ENTRY || 'http://localhost:3000';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) {
+if (electronSquirrelStartup) {
   app.quit();
 }
 
