@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { authenticate } from '../../services/authService.js';
+import authService from '../../services/authService.js';
 import './AuthScreen.css';
 
 const CODE_LENGTH = 6;
@@ -47,7 +47,7 @@ const AuthScreen = ({ onAuthenticated }) => {
       setError(null);
 
       // Call authentication service
-      const result = await authenticate(code);
+      const result = await authService.authenticate(code);
 
       if (result.success) {
         setSuccess(true);
