@@ -198,4 +198,92 @@ if (typeof window !== 'undefined') {
   }
 }
 
-export { initialize, authenticate, logout, getAuthState, authEvents };
+// Simulate API delay for development
+const simulateApiDelay = () => new Promise(resolve => setTimeout(resolve, 1500));
+
+/**
+ * Authenticate a user with an interview code
+ * @param {string} code - The interview code
+ * @returns {Promise<Object>} - Authentication result
+ */
+export const authenticateWithCode = async (code) => {
+  try {
+    // Simulate API call delay
+    await simulateApiDelay();
+    
+    // For development: mock successful authentication for specific test codes
+    if (code === '123456') {
+      return {
+        success: true,
+        data: {
+          userId: 'test-user-id',
+          sessionId: 'test-session-' + Date.now(),
+          expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString() // 24 hours from now
+        }
+      };
+    }
+    
+    // TODO: Replace with actual API call to authentication server
+    // const response = await fetch('api/auth/interview-code', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({ code }),
+    // });
+    
+    // if (!response.ok) {
+    //   const errorData = await response.json();
+    //   throw new Error(errorData.message || 'Authentication failed');
+    // }
+    
+    // return await response.json();
+    
+    // For development: mock failed authentication for any other code
+    throw new Error('Invalid interview code. Please check and try again.');
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message || 'Authentication failed'
+    };
+  }
+};
+
+/**
+ * Check if user is currently authenticated
+ * @returns {boolean} - True if user is authenticated
+ */
+export const isAuthenticated = () => {
+  // TODO: Implement actual auth check logic
+  // Check if auth token exists and is not expired
+  const authData = localStorage.getItem('auth_data');
+  if (!authData) return false;
+  
+  try {
+    const { expiresAt } = JSON.parse(authData);
+    return new Date(expiresAt) > new Date();
+  } catch (error) {
+    return false;
+  }
+};
+
+/**
+ * Save authentication data to local storage
+ * @param {Object} authData - Authentication data to store
+ */
+export const saveAuthData = (authData) => {
+  localStorage.setItem('auth_data', JSON.stringify(authData));
+};
+
+/**
+ * Export module interface
+ */
+export default {
+  on: authEvents.on,
+  off: authEvents.off,
+  initialize,
+  authenticate,
+  logout,
+  getAuthState
+};
+
